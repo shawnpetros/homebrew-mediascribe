@@ -4,7 +4,7 @@ class Mediascribe < Formula
   desc "TUI-first tool for transcribing, translating, and analyzing audio/video media"
   homepage "https://github.com/shawnpetros/mediascribe"
   url "https://pypi.io/packages/source/m/mediascribe/mediascribe-0.1.0.tar.gz"
-  sha256 "PLACEHOLDER_SHA256"
+  sha256 "5b956b419f55eae4a6f626109e2600b01128db560509d39257128d7afe00ed56"
   license "MIT"
   head "https://github.com/shawnpetros/mediascribe.git", branch: "main"
   
