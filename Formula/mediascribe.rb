@@ -1,18 +1,21 @@
 class Mediascribe < Formula
-  include Language::Python::Virtualenv
-
   desc "TUI-first tool for transcribing, translating, and analyzing audio/video media"
   homepage "https://github.com/shawnpetros/mediascribe"
-  url "https://files.pythonhosted.org/packages/91/f7/e98a7dcec85cfd6112cc6d4d1e63f502d0004de19671d2e8d37bd7d01743/mediascribe-0.9.0.tar.gz"
-  sha256 "177e6f7ce2e3df281ec76ca1c9f5f2a032b48af633132e7a0766287a89820378"
+  url "https://files.pythonhosted.org/packages/13/5f/0026c112349338738df0e9a0d90cedfe40abd80249a2267d46eb926f292a/mediascribe-0.10.1.tar.gz"
+  sha256 "e7b93ca7a1df7d56131ec8e64df5cab4d6f020500e5264a64cf7a61c4cc8a8de"
   license "MIT"
   head "https://github.com/shawnpetros/mediascribe.git", branch: "main"
 
-  depends_on "python@3.12"
   depends_on "ffmpeg"
+  depends_on "python@3.13"
 
   def install
-    virtualenv_install_with_resources
+    python3 = "python3.13"
+    venv = libexec/"venv"
+    system python3, "-m", "venv", venv
+    system venv/"bin/pip", "install", "--upgrade", "pip"
+    system venv/"bin/pip", "install", cached_download
+    bin.install_symlink venv/"bin/mediascribe"
   end
 
   test do
